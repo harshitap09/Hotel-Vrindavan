@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Vrindavan Royale | Krishna's Regal Abode</title>
+    <!-- Tailwind + Google Fonts + Font Awesome + Swiper -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0F0A05;
+            color: #ECE8E0;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        h1,
+        h2,
+        h3,
+        .serif {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .gold-royal {
+            background: linear-gradient(135deg, #E4C580, #FFDF9C, #C9A03D);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .royal-bg {
+            background: radial-gradient(circle at 10% 20%, #1A120B, #0A0603);
+        }
+
+        .border-royal {
+            border-color: rgba(212, 175, 55, 0.4);
+        }
+
+        .floating-feather {
+            animation: floatSoft 5s ease-in-out infinite;
+        }
+
+        @keyframes floatSoft {
+            0% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-8px) rotate(3deg);
+            }
+
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: #E4C580 !important;
+            background: rgba(20, 12, 8, 0.8);
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            backdrop-filter: blur(6px);
+        }
+
+        .room-card {
+            transition: all 0.3s ease;
+            background: #17110C;
+            border: 1px solid rgba(212, 175, 55, 0.25);
+        }
+
+        .room-card:hover {
+            transform: translateY(-6px);
+            border-color: #D4AF37;
+            box-shadow: 0 25px 35px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .testimonial-card {
+            background: #1E1712;
+            transition: transform 0.2s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            background: #231E18;
+        }
+
+        .btn-royal {
+            background: #D4AF37;
+            color: #0A0603;
+            transition: all 0.2s;
+        }
+
+        .btn-royal:hover {
+            background: #E4C580;
+            transform: scale(0.98);
+        }
+
+        .btn-outline-royal {
+            border: 1px solid #D4AF37;
+            color: #D4AF37;
+        }
+
+        .btn-outline-royal:hover {
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1A120B;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+
+<body class="overflow-x-hidden royal-bg">
+
+    <!-- ========== NAVIGATION (Avarth minimal + royal twist) ========== -->
+    <nav class="fixed top-0 left-0 w-full bg-black/80 backdrop-blur-md shadow-lg z-50 border-b border-gold-royal/30">
+        <div class="max-w-7xl mx-auto px-5 md:px-8 py-4 flex items-center justify-between flex-wrap">
+            <div class="flex items-center gap-2">
+                <i class="fas fa-feather-alt text-2xl text-[#E4C580] floating-feather"></i>
+                <span class="text-2xl font-bold serif tracking-wide text-white">Vrindavan<span
+                        class="gold-royal">·Royale</span></span>
+                <span
+                    class="text-xs uppercase tracking-wider text-[#D4AF37] bg-[#2A1E12] px-2 py-0.5 rounded-full">Krishna's
+                    Mahal</span>
+            </div>
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-stone-300">
+                <a href="#home" class="hover:text-[#E4C580] transition">Home</a>
+                <a href="#rooms" class="hover:text-[#E4C580] transition">Royal Rooms</a>
+                <a href="#facilities" class="hover:text-[#E4C580] transition">Grand Facilities</a>
+                <a href="#testimonials" class="hover:text-[#E4C580] transition">Divine Testimonials</a>
+                <a href="#contact" class="hover:text-[#E4C580] transition">Enquiry</a>
+            </div>
+            <button
+                class="bg-[#D4AF37] text-black px-5 py-2 rounded-full text-sm font-semibold shadow-md transition flex items-center gap-2 hover:bg-[#E4C580]"><i
+                    class="fas fa-crown"></i> Book Royal Stay</button>
+        </div>
+    </nav>
+
+    <main class="pt-24 md:pt-28">
+        <!-- HERO SECTION – majestic, Krishna's whisper -->
+        <section id="home" class="relative overflow-hidden">
+            <div
+                class="absolute inset-0 bg-[url('https://images.pexels.com/photos/1267325/pexels-photo-1267325.jpeg?auto=compress&cs=tinysrgb&w=1600')] bg-cover bg-center opacity-10">
+            </div>
+            <div class="absolute top-10 right-8 opacity-20 pointer-events-none"><i
+                    class="fas fa-feather-alt text-7xl text-[#D4AF37] rotate-12"></i></div>
+            <div
+                class="max-w-7xl mx-auto px-6 py-12 md:py-20 flex flex-col md:flex-row items-center gap-12 relative z-2">
+                <div class="flex-1 space-y-5">
+                    <div
+                        class="inline-flex items-center gap-2 bg-black/40 backdrop-blur-sm rounded-full px-4 py-1.5 text-[#E4C580] text-sm border border-[#D4AF37]/30">
+                        <i class="fas fa-crown text-[#D4AF37]"></i> <span>Maharaja's Blessing · Vrindavan Dham</span> <i
+                            class="fas fa-peacock text-[#D4AF37]"></i>
+                    </div>
+                    <h1 class="text-5xl md:text-7xl font-bold serif leading-tight text-white">Where Radha-Krishna <br>
+                        <span class="gold-royal">reign in eternal grace</span></h1>
+                    <p class="text-stone-300 text-lg max-w-lg leading-relaxed">Step into a royal heritage where golden
+                        peacock feathers, the melody of the flute, and opulent thakur-ghar style comfort await.</p>
+                    <div class="flex flex-wrap gap-4 pt-3">
+                        <a href="#rooms"
+                            class="btn-royal px-7 py-3 rounded-full flex items-center gap-2 font-semibold shadow-lg"><i
+                                class="fas fa-gem"></i> Explore Royal Suites</a>
+                        <a href="#contact"
+                            class="btn-outline-royal px-7 py-3 rounded-full flex items-center gap-2 hover:bg-white/5 transition"><i
+                                class="fas fa-feather-alt"></i> Seek Blessings</a>
+                    </div>
+                </div>
+                <div class="flex-1 flex justify-center">
+                    <div
+                        class="relative w-80 h-80 md:w-96 md:h-96 rounded-full bg-gradient-to-tr from-[#D4AF37]/20 to-[#8B5A2B]/20 flex items-center justify-center p-2">
+                        <img src="https://images.pexels.com/photos/6353597/pexels-photo-6353597.jpeg?auto=compress&cs=tinysrgb&w=800"
+                            alt="Krishna idol with peacock feather"
+                            class="rounded-2xl w-72 h-72 md:w-80 md:h-80 object-cover shadow-2xl ring-2 ring-[#D4AF37]/60">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ROOMS SECTION – based on Krishnarchana content + Avarth layout style (cards with prices, facilities, images) -->
+        <section id="rooms" class="py-24 px-6">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-14">
+                    <i class="fas fa-crown text-3xl text-[#D4AF37] mb-2"></i>
+                    <h2 class="text-4xl md:text-6xl font-bold serif text-white">Explore Our Royal Chambers</h2>
+                    <div class="w-28 h-0.5 bg-[#D4AF37] mx-auto mt-4 mb-5"></div>
+                    <p class="text-stone-400 max-w-2xl mx-auto">Luxury suites imbued with peacock motifs, flute-inspired
+                        tranquility, and the grandeur of Krishna Leela.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Junior Suite – Royal peacock theme -->
+                    <div class="room-card rounded-2xl overflow-hidden shadow-2xl">
+                        <div class="swiper juniorSwiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide"><img
+                                        src="https://images.pexels.com/photos/2587054/pexels-photo-2587054.jpeg?auto=compress&cs=tinysrgb&w=800"
+                                        alt="Junior Suite" class="h-64 w-full object-cover"></div>
+                                <div class="swiper-slide"><img
+                                        src="https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg?auto=compress&cs=tinysrgb&w=800"
+                                        class="h-64 w-full object-cover"></div>
+                            </div>
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start">
+                                <h3 class="text-2xl serif font-bold text-white">Junior Suite <span
+                                        class="text-[#D4AF37] text-sm">· Peacock Feather</span></h3><span
+                                    class="text-2xl font-bold text-[#E4C580]">₹2500<span
+                                        class="text-sm text-stone-400">/Night</span></span>
+                            </div>
+                            <div class="flex flex-wrap gap-3 my-3 text-sm text-stone-400"><span><i
+                                        class="fas fa-bed text-[#D4AF37]"></i> 1 Double Bed</span><span><i
+                                        class="fas fa-bath"></i> 1 Bath</span><span><i class="fas fa-parking"></i>
+                                    Parking</span><span><i class="fas fa-wifi"></i> WiFi</span></div>
+                            <p class="text-stone-300 text-sm leading-relaxed">Experience comfort and elegance in our
+                                Junior Suite, featuring modern amenities, a relaxing atmosphere, and hand-painted
+                                peacock motifs. Perfect for couples seeking a serene royal getaway.</p>
+                            <div class="mt-5 flex items-center justify-between"><span
+                                    class="flex gap-2 text-xs text-[#D4AF37]"><i class="fas fa-feather-alt"></i> Flute
+                                    meditation access</span><button
+                                    class="border border-[#D4AF37] text-[#E4C580] px-4 py-1.5 rounded-full text-sm hover:bg-[#D4AF37]/10">Book
+                                    Now →</button></div>
+                        </div>
+                    </div>
+
+                    <!-- Executive Suite – Krishna's flute elegance -->
+                    <div class="room-card rounded-2xl overflow-hidden shadow-2xl">
+                        <div class="swiper executiveSwiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide"><img
+                                        src="https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?auto=compress&cs=tinysrgb&w=800"
+                                        alt="Executive Suite"></div>
+                                <div class="swiper-slide"><img
+                                        src="https://images.pexels.com/photos/1457847/pexels-photo-1457847.jpeg?auto=compress&cs=tinysrgb&w=800">
+                                </div>
+                            </div>
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between">
+                                <h3 class="text-2xl serif font-bold text-white">Executive Suite <span
+                                        class="text-[#D4AF37] text-sm">· Bansuri Blessing</span></h3><span
+                                    class="text-2xl font-bold text-[#E4C580]">₹3000<span
+                                        class="text-sm text-stone-400">/Night</span></span>
+                            </div>
+                            <div class="flex flex-wrap gap-3 my-3 text-sm text-stone-400"><span><i
+                                        class="fas fa-bed"></i> 1 Double / 1 Single</span><span><i
+                                        class="fas fa-bath"></i> 1 Bath</span><span><i class="fas fa-parking"></i>
+                                    Parking</span><span><i class="fas fa-wifi"></i> WiFi</span></div>
+                            <p class="text-stone-300 text-sm">Our Executive Suite offers a luxurious blend of space and
+                                privacy, ideal for families or business travelers. Adorned with mural art of Raas-Leela
+                                and a private balcony overlooking tulsi gardens.</p>
+                            <div class="mt-5 flex items-center justify-between"><span
+                                    class="flex gap-2 text-xs text-[#D4AF37]"><i class="fas fa-peacock"></i> Peacock
+                                    feather welcome</span><button
+                                    class="border border-[#D4AF37] text-[#E4C580] px-4 py-1.5 rounded-full text-sm hover:bg-[#D4AF37]/10">Book
+                                    Now →</button></div>
+                        </div>
+                    </div>
+
+                    <!-- Super Deluxe – Royal Peacock Pavilion (Inspired by Krishnarchana) -->
+                    <div class="room-card rounded-2xl overflow-hidden shadow-2xl">
+                        <div class="swiper deluxeSwiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide"><img
+                                        src="https://images.pexels.com/photos/2387873/pexels-photo-2387873.jpeg?auto=compress&cs=tinysrgb&w=800"
+                                        alt="Super Deluxe"></div>
+                                <div class="swiper-slide"><img
+                                        src="https://images.pexels.com/photos/2254206/pexels-photo-2254206.jpeg?auto=compress&cs=tinysrgb&w=800">
+                                </div>
+                            </div>
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between">
+                                <h3 class="text-2xl serif font-bold text-white">Super Deluxe <span
+                                        class="text-[#D4AF37] text-sm">· Mayur Mahal</span></h3><span
+                                    class="text-2xl font-bold text-[#E4C580]">₹3500<span
+                                        class="text-sm text-stone-400">/Night</span></span>
+                            </div>
+                            <div class="flex flex-wrap gap-3 my-3 text-stone-400"><span><i class="fas fa-bed"></i> 2
+                                    Double Beds</span><span><i class="fas fa-bath"></i> 1 Bath + Jacuzzi</span><span><i
+                                        class="fas fa-parking"></i> Parking</span><span><i class="fas fa-wifi"></i>
+                                    WiFi</span></div>
+                            <p class="text-stone-300 text-sm">Indulge in lavish space with two double beds, premium
+                                facilities, handcrafted peacock feather decor, and a private swing. Ideal for groups
+                                seeking a luxurious Krishna-leela retreat.</p>
+                            <div class="mt-5 flex items-center justify-between"><span
+                                    class="flex gap-2 text-xs text-[#D4AF37]"><i class="fas fa-feather-alt"></i> Royal
+                                    aarti service</span><button
+                                    class="border border-[#D4AF37] text-[#E4C580] px-4 py-1.5 rounded-full text-sm hover:bg-[#D4AF37]/10">Book
+                                    Now →</button></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- extra divine note -->
+                <div class="text-center mt-12 text-stone-400 text-sm border-t border-[#D4AF37]/20 pt-8"><i
+                        class="fas fa-bansuri text-[#D4AF37] mr-2"></i> Each suite includes a flute & peacock feather
+                    motif, daily prasadam, and Krishna bhajan playlist.</div>
+            </div>
+        </section>
+
+        <!-- FACILITIES with royal peacock, flute, crown elements (MAHARAJA STYLE) -->
+        <section id="facilities" class="py-20 px-6 border-y border-[#D4AF37]/20 bg-black/30">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-12">
+                    <i class="fas fa-crown text-3xl text-[#D4AF37]"></i>
+                    <h2 class="text-4xl md:text-5xl font-bold serif text-white mt-2">Grand Palace Facilities</h2>
+                    <p class="text-stone-400 max-w-xl mx-auto">Where peacock grace & royal heritage meet modern
+                        comforts.</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-[#17110C] p-6 rounded-2xl text-center border border-[#D4AF37]/20"><i
+                            class="fas fa-feather-alt text-4xl text-[#E4C580] mb-3 floating-feather"></i>
+                        <h3 class="font-bold text-xl text-white">Peacock Spa</h3>
+                        <p class="text-stone-400 text-sm">Ayurvedic therapies with flute background & gold leaf oils</p>
+                    </div>
+                    <div class="bg-[#17110C] p-6 rounded-2xl text-center border border-[#D4AF37]/20"><i
+                            class="fas fa-bansuri text-4xl text-[#E4C580] mb-3"></i>
+                        <h3 class="font-bold text-xl text-white">Bansuri Ghat</h3>
+                        <p class="text-stone-400 text-sm">Sunset flute meditation & Ganga aarti by the Yamuna replica
+                        </p>
+                    </div>
+                    <div class="bg-[#17110C] p-6 rounded-2xl text-center border border-[#D4AF37]/20"><i
+                            class="fas fa-peacock text-4xl text-[#E4C580] mb-3"></i>
+                        <h3 class="font-bold text-xl text-white">Mayur Thakur Dining</h3>
+                        <p class="text-stone-400 text-sm">Royal vegetarian thali, peacock feather garnish, Prasad-style
+                        </p>
+                    </div>
+                    <div class="bg-[#17110C] p-6 rounded-2xl text-center border border-[#D4AF37]/20"><i
+                            class="fas fa-swimmer text-4xl text-[#E4C580] mb-3"></i>
+                        <h3 class="font-bold text-xl text-white">Radha Kund Pool</h3>
+                        <p class="text-stone-400 text-sm">Infinity pool with lotus motifs + underwater flute music</p>
+                    </div>
+                    <div class="bg-[#17110C] p-6 rounded-2xl text-center border border-[#D4AF37]/20"><i
+                            class="fas fa-dharmachakra text-3xl text-[#D4AF37] mb-3"></i>
+                        <h3 class="font-bold text-white">Gita Darbar</h3>
+                        <p class="text-stone-400 text-sm">Royal library with scriptures, peacock quill calligraphy</p>
+                    </div>
+                    <div class="bg-[#17110C] p-6 rounded-2xl text-center border border-[#D4AF37]/20"><i
+                            class="fas fa-horse-head text-3xl text-[#D4AF37] mb-3"></i>
+                        <h3 class="font-bold text-white">Govardhan Chariot</h3>
+                        <p class="text-stone-400 text-sm">Heritage bullock cart / e-rikshaw tours of Vrindavan</p>
+                    </div>
+                    <div class="bg-[#17110C] p-6 rounded-2xl text-center border border-[#D4AF37]/20"><i
+                            class="fas fa-ring text-3xl text-[#D4AF37] mb-3"></i>
+                        <h3 class="font-bold text-white">Raj Tilak Ceremony</h3>
+                        <p class="text-stone-400 text-sm">Welcome with tikka, peacock feather & garland</p>
+                    </div>
+                    <div class="bg-[#17110C] p-6 rounded-2xl text-center border border-[#D4AF37]/20"><i
+                            class="fas fa-dove text-3xl text-[#D4AF37] mb-3"></i>
+                        <h3 class="font-bold text-white">Flute Concerts</h3>
+                        <p class="text-stone-400 text-sm">Live bansuri evenings by renowned artists</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIALS – exactly Avarth style but with royal devotee words -->
+        <section id="testimonials" class="py-24 px-6">
+            <div class="max-w-7xl mx-auto text-center">
+                <i class="fas fa-feather-alt text-3xl text-[#D4AF37]"></i>
+                <h2 class="text-4xl md:text-5xl font-bold serif text-white mt-2">Don't take our word for it, take theirs
+                </h2>
+                <p class="text-stone-400 max-w-2xl mx-auto mb-12">Voices of royals who dwelled in Krishna’s embrace</p>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
+                    <div class="testimonial-card p-6 rounded-2xl"><i
+                            class="fas fa-quote-left text-[#D4AF37] text-2xl"></i>
+                        <p class="mt-3 text-stone-200">"The peacock feather-themed suite transported us to Vrindavan's
+                            golden era. Every morning we heard flute from the courtyard – pure magic."</p>
+                        <div class="flex items-center gap-2 mt-4 text-sm"><i
+                                class="fas fa-crown text-[#D4AF37]"></i><span class="font-semibold text-white">–
+                                Rajkumari Aditi</span><span class="text-stone-500">✦ Verified Royal Stay</span></div>
+                    </div>
+                    <div class="testimonial-card p-6 rounded-2xl"><i
+                            class="fas fa-quote-left text-[#D4AF37] text-2xl"></i>
+                        <p class="mt-3 text-stone-200">"Exceptional service. They arranged a private bhajan night with
+                            authentic peacock feather decor. The Super Deluxe was truly majestic!"</p>
+                        <div class="flex items-center gap-2 mt-4"><i class="fas fa-peacock text-[#D4AF37]"></i><span
+                                class="font-semibold text-white">– Yashvardhan Singh</span></div>
+                    </div>
+                    <div class="testimonial-card p-6 rounded-2xl"><i
+                            class="fas fa-quote-left text-[#D4AF37] text-2xl"></i>
+                        <p class="mt-3 text-stone-200">"We booked the Executive Suite. The view of the Tulsi garden with
+                            a peacock wandering around felt like a blessing. Will return for the flute meditation."</p>
+                        <div class="flex items-center gap-2 mt-4"><i class="fas fa-bansuri"></i><span
+                                class="font-semibold text-white">– Gopika Varma</span><span
+                                class="text-[#D4AF37]">★★★★★</span></div>
+                    </div>
+                </div>
+                <div class="mt-10 flex justify-center gap-4 text-xs text-stone-400"><span><i
+                            class="fas fa-check-circle text-[#D4AF37]"></i> "Peacock sightings daily"</span><span><i
+                            class="fas fa-feather-alt text-[#D4AF37]"></i> "Flute healing ceremony"</span><span><i
+                            class="fas fa-crown text-[#D4AF37]"></i> "Truly Regal"</span></div>
+            </div>
+        </section>
+
+        <!-- CONTACT / ENQUIRY (Don't be a stranger - Avarth style) -->
+        <section id="contact" class="py-20 px-6 border-t border-[#D4AF37]/20 bg-gradient-to-b from-black to-[#0F0A05]">
+            <div class="max-w-5xl mx-auto text-center">
+                <i class="fas fa-feather-alt text-3xl text-[#D4AF37] floating-feather"></i>
+                <h2 class="text-4xl md:text-5xl font-bold serif text-white mt-2">Don't Be A Stranger</h2>
+                <p class="text-stone-400 max-w-xl mx-auto mt-2">For royal enquiries, collaborations or early access to
+                    Krishna Janmashtami specials.</p>
+                <div class="mt-10 max-w-2xl mx-auto bg-[#17110C] rounded-3xl shadow-2xl p-8 border border-[#D4AF37]/30">
+                    <form class="grid sm:grid-cols-2 gap-5">
+                        <input type="text" placeholder="Your Maharaja/Maharani name"
+                            class="bg-black/60 border border-stone-700 rounded-full px-5 py-3 text-white focus:ring-2 focus:ring-[#D4AF37] outline-none">
+                        <input type="email" placeholder="Email address"
+                            class="bg-black/60 border border-stone-700 rounded-full px-5 py-3 text-white focus:ring-[#D4AF37]">
+                        <input type="text" placeholder="Phone / WhatsApp"
+                            class="bg-black/60 border border-stone-700 rounded-full px-5 py-3 text-white">
+                        <select class="bg-black/60 border border-stone-700 rounded-full px-5 py-3 text-white">
+                            <option>Select Royal Suite</option>
+                            <option>Junior Suite (Peacock Feather)</option>
+                            <option>Executive Suite (Bansuri)</option>
+                            <option>Super Deluxe (Mayur Mahal)</option>
+                        </select>
+                        <div class="sm:col-span-2"><textarea rows="3"
+                                placeholder="Share travel dates or your desire for flute ceremony, peacock feather decor, or royal aarti..."
+                                class="bg-black/60 border border-stone-700 rounded-2xl px-5 py-3 w-full text-white"></textarea>
+                        </div>
+                        <div class="sm:col-span-2"><button
+                                class="btn-royal w-full text-black py-3 rounded-full text-lg font-bold flex items-center justify-center gap-2"><i
+                                    class="fas fa-crown"></i> Send Royal Enquiry</button></div>
+                    </form>
+                    <p class="text-xs text-stone-500 mt-6"><i class="fas fa-feather-alt text-[#D4AF37]"></i> We'll reply
+                        with a digital peacock feather blessing & exclusive booking offers.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="bg-black/90 text-stone-400 py-10 text-center text-sm border-t border-[#D4AF37]/20">
+            <div class="flex justify-center gap-6 mb-4 text-[#D4AF37] text-lg"><i class="fab fa-instagram"></i><i
+                    class="fab fa-facebook"></i><i class="fas fa-feather-alt"></i><i class="fas fa-bansuri"></i><i
+                    class="fas fa-crown"></i></div>
+            <p>© Vrindavan Royale | Inspired by the eternal flute of Shri Krishna | Peacock feathers & royal motifs
+                celebrate Brij Maharaja</p>
+            <p class="text-xs mt-2">Vrindavan, Uttar Pradesh — Where every corridor echoes the melody of Krishna's
+                Bansuri</p>
+        </footer>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const swiperConfig = {
+                loop: true,
+                navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+                autoplay: { delay: 4000, disableOnInteraction: false },
+            };
+            new Swiper('.juniorSwiper', swiperConfig);
+            new Swiper('.executiveSwiper', swiperConfig);
+            new Swiper('.deluxeSwiper', swiperConfig);
+        });
+    </script>
+</body>
+
+</html>

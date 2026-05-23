@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>The Callewick | Boutique Lakeside Hotel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #fefcf7;
+            font-family: system-ui, -apple-system, 'Segoe UI', 'Inter', 'Helvetica Neue', Helvetica, sans-serif;
+            color: #1a1c1d;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        /* container */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* header / navigation (inspired by minimal approach) */
+        .site-header {
+            padding: 1.5rem 0 0.5rem;
+            border-bottom: 1px solid #e8e2d9;
+            margin-bottom: 3rem;
+        }
+
+        .header-inner {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 1rem;
+        }
+
+        .logo a {
+            font-size: 1.5rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            text-decoration: none;
+            color: #2c2b28;
+        }
+
+        .logo span {
+            font-weight: 300;
+            color: #9b7b5c;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 450;
+            color: #4a463f;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: #b87c4f;
+        }
+
+        /* hero section */
+        .hero {
+            text-align: center;
+            padding: 3rem 0 4rem;
+            border-bottom: 1px solid #e8e2d9;
+            margin-bottom: 4rem;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            color: #2c2b28;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .hero .subhead {
+            font-size: 1.25rem;
+            color: #5f5b54;
+            max-width: 620px;
+            margin: 0 auto 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #1a1c1d;
+            color: white;
+            padding: 0.9rem 2.3rem;
+            text-decoration: none;
+            font-weight: 500;
+            border-radius: 40px;
+            transition: all 0.25s ease;
+            border: 1px solid #1a1c1d;
+            font-size: 0.95rem;
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: #1a1c1d;
+            border-color: #1a1c1d;
+        }
+
+        /* story section (The Lore) */
+        .story-section {
+            max-width: 780px;
+            margin: 0 auto 5rem;
+            text-align: center;
+        }
+
+        .section-kicker {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #b87c4f;
+            margin-bottom: 1rem;
+        }
+
+        .story-section h2 {
+            font-size: 2.4rem;
+            font-weight: 450;
+            margin-bottom: 1.75rem;
+            letter-spacing: -0.01em;
+            color: #2c2b28;
+        }
+
+        .story-text {
+            font-size: 1.1rem;
+            color: #3b3a36;
+            line-height: 1.6;
+        }
+
+        /* Rooms (products inspired) */
+        .rooms-section {
+            margin: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 450;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #6f6a61;
+            margin-bottom: 3rem;
+            font-size: 1rem;
+        }
+
+        .rooms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 1rem;
+        }
+
+        .room-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02), 0 2px 4px rgba(0, 0, 0, 0.03);
+            border: 1px solid #f0ebe4;
+        }
+
+        .room-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.08);
+        }
+
+        .room-image {
+            background-color: #e7e0d7;
+            height: 240px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #7d6e5c;
+            font-size: 0.9rem;
+        }
+
+        /* simulated image placeholder with elegant gradients/unicode */
+        .img-placeholder {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .room-card:nth-child(1) .img-placeholder {
+            background-image: linear-gradient(125deg, #cbbfae, #dfd5c8), url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSI4MCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSIjYmI5YjdmIj48cGF0aCBkPSJNMTIgM0wzIDh2MTBoMThWOGwtOS01eiIgc3Ryb2tlPSIjZmZmIiBmaWxsPSIjYzNhYjdmIi8+PC9zdmc+');
+            background-blend-mode: overlay;
+            background-size: 40px, cover;
+        }
+
+        .room-card:nth-child(2) .img-placeholder {
+            background-image: linear-gradient(135deg, #cfc3b2, #e6dbcf), repeating-linear-gradient(45deg, #a5835e22 0px, #a5835e22 2px, #f1ede822 2px, #f1ede822 8px);
+            background-blend-mode: overlay;
+        }
+
+        .room-card:nth-child(3) .img-placeholder {
+            background-image: radial-gradient(circle at 20% 30%, #d9cdbc, #b8a48b);
+        }
+
+        .room-info {
+            padding: 1.6rem 1.5rem 1.8rem;
+        }
+
+        .room-name {
+            font-size: 1.65rem;
+            font-weight: 470;
+            letter-spacing: -0.3px;
+            margin-bottom: 0.5rem;
+        }
+
+        .room-description {
+            color: #5c574f;
+            margin: 0.75rem 0 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.45;
+        }
+
+        .room-btn {
+            background: none;
+            border: 1px solid #cdc3b8;
+            padding: 0.6rem 1.5rem;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 0.85rem;
+            color: #2c2b28;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .room-btn:hover {
+            background-color: #f3efe9;
+            border-color: #b87c4f;
+        }
+
+        /* testimonials - exact clone of structure and style */
+        .testimonials {
+            margin: 5rem 0;
+            background-color: #faf7f2;
+            padding: 4rem 0;
+            border-radius: 48px;
+        }
+
+        .testimonial-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .testimonial-header h2 {
+            font-size: 2rem;
+            font-weight: 450;
+        }
+
+        .testimonial-header p {
+            color: #b87c4f;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 0.5rem;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 28px;
+            padding: 1.8rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+            border: 1px solid #efe6dd;
+        }
+
+        .verified {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.75rem;
+            color: #2b6e3c;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .verified::before {
+            content: "✓";
+            background-color: #2b6e3c;
+            color: white;
+            font-size: 10px;
+            padding: 2px 5px;
+            border-radius: 20px;
+        }
+
+        .testimonial-text {
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: 1.2rem;
+            color: #2f2e2b;
+        }
+
+        .guest-name {
+            font-weight: 500;
+            color: #b87c4f;
+            font-size: 0.85rem;
+        }
+
+        /* cta & footer (don't be a stranger) */
+        .cta-footer {
+            text-align: center;
+            padding: 4rem 0 3rem;
+            border-top: 1px solid #e8e2d9;
+            margin-top: 3rem;
+        }
+
+        .cta-footer h3 {
+            font-size: 2rem;
+            font-weight: 450;
+            margin-bottom: 1rem;
+        }
+
+        .cta-footer .get-in-touch {
+            font-size: 1.1rem;
+            color: #5a564e;
+            margin-bottom: 2rem;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0 1rem;
+        }
+
+        .contact-links a {
+            text-decoration: none;
+            color: #2c2b28;
+            border-bottom: 1px dotted #cbc2b6;
+            font-weight: 450;
+        }
+
+        .copyright {
+            margin-top: 3rem;
+            font-size: 0.8rem;
+            color: #948e84;
+        }
+
+        hr {
+            margin: 2rem 0;
+            border: none;
+            border-top: 1px solid #ece5dd;
+        }
+
+        @media (max-width: 740px) {
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+
+            .header-inner {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .story-section h2 {
+                font-size: 1.9rem;
+            }
+
+            .testimonials {
+                padding: 2.5rem 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header class="site-header">
+            <div class="header-inner">
+                <div class="logo"><a href="#">The Callewick <span>| Lakeside Retreat</span></a></div>
+                <div class="nav-links">
+                    <a href="#rooms">Rooms</a>
+                    <a href="#stories">Stories</a>
+                    <a href="#stay">Contact</a>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <!-- Hero section -->
+            <section class="hero">
+                <h1>Where the hours<br>drift like ripples</h1>
+                <div class="subhead">A hidden manor hotel on the edge of the water — heritage walls, slow mornings, and
+                    unexpected details.</div>
+                <a href="#" class="btn">Check availability →</a>
+            </section>
+
+            <!-- "The Lore" inspired story -->
+            <div class="story-section">
+                <div class="section-kicker">The story</div>
+                <h2>The Lore</h2>
+                <div class="story-text">
+                    <p>When we first walked into this abandoned lakeside inn after a wrong turn on a rainy Tuesday,
+                        opening a hotel was the last thing on our minds. We were three weary travelers looking for
+                        shelter. But the old stone walls whispered something — a quiet magic, a hush that felt like
+                        home. So we stayed. Restored every creaky floorboard, saved every vintage key. Now we invite you
+                        to stay, too.</p>
+                </div>
+            </div>
+
+            <!-- Rooms section (like product grid) -->
+            <div class="rooms-section" id="rooms">
+                <h2 class="section-title">Our rooms</h2>
+                <div class="section-subtitle">each with a soul, a view, a secret</div>
+                <div class="rooms-grid">
+                    <div class="room-card">
+                        <div class="room-image">
+                            <div class="img-placeholder"></div>
+                        </div>
+                        <div class="room-info">
+                            <div class="room-name">The Boathouse Suite</div>
+                            <div class="room-description">Hovering above the reeds, this suite has a private deck, a
+                                clawfoot tub, and the sound of gentle lapping water. Handcrafted wooden beams & original
+                                fireplace.</div>
+                            <a href="#" class="room-btn">Book this room →</a>
+                        </div>
+                    </div>
+                    <div class="room-card">
+                        <div class="room-image">
+                            <div class="img-placeholder"></div>
+                        </div>
+                        <div class="room-info">
+                            <div class="room-name">The Library Attic</div>
+                            <div class="room-description">Burrowed under the eaves, walls lined with mismatched books, a
+                                writing desk and a skylight open to the stars. The coziest nest for dreamers & night
+                                owls.</div>
+                            <a href="#" class="room-btn">Book this room →</a>
+                        </div>
+                    </div>
+                    <div class="room-card">
+                        <div class="room-image">
+                            <div class="img-placeholder"></div>
+                        </div>
+                        <div class="room-info">
+                            <div class="room-name">The Keeper's Cottage</div>
+                            <div class="room-description">Separate garden entrance, vaulted ceilings and a wood-burning
+                                stove. Oversized windows frame the misty lake at dawn. Perfect for longer stays.</div>
+                            <a href="#" class="room-btn">Book this room →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonials: exact same copy structure, hotel context -->
+            <div class="testimonials" id="stories">
+                <div class="testimonial-header">
+                    <h2>Don't take our word for it, take theirs</h2>
+                    <p>Verified guests</p>
+                </div>
+                <div class="testimonial-grid">
+                    <!-- batch 1 - same layout as avarth reviews -->
+                    <div class="testimonial-card">
+                        <div class="verified">Verified stay</div>
+                        <div class="testimonial-text">“Stayed for a weekend and ended up extending for two more nights.
+                            The silence is the real luxury here. The staff remembered my tea preference every single
+                            morning.”</div>
+                        <div class="guest-name">— Eleanor R.</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="verified">Verified stay</div>
+                        <div class="testimonial-text">“Breakfast is served until noon — yes, you read that right.
+                            Homemade sourdough and the best lake view. Also the Boathouse Suite made me propose to my
+                            partner!”</div>
+                        <div class="guest-name">— Mika & Sam</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="verified">Verified stay</div>
+                        <div class="testimonial-text">“The Library Attic stole my heart. I finished an entire novel just
+                            listening to the rain. The fireplace and the creaky floors felt like time travel. Will
+                            return.”</div>
+                        <div class="guest-name">— Theo L.</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="verified">Verified stay</div>
+                        <div class="testimonial-text">“Every detail whispers craftsmanship: from the vintage key to the
+                            hand-picked ceramics. The hosts left a handwritten note welcoming us. Incredible
+                            hospitality.”</div>
+                        <div class="guest-name">— Camille W.</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="verified">Verified stay</div>
+                        <div class="testimonial-text">“I’ve traveled a lot, but The Callewick feels like a secret. The
+                            Keeper’s Cottage has a wood-burning stove that crackles just right. Absolute tranquility.”
+                        </div>
+                        <div class="guest-name">— James K.</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="verified">Verified stay</div>
+                        <div class="testimonial-text">“Unique, quiet, and deeply personal. The owners gave us a tour of
+                            the old wine cellar and told stories of the manor. This isn’t a hotel, it’s a living story.”
+                        </div>
+                        <div class="guest-name">— Priya & Alistair</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="verified">Verified stay</div>
+                        <div class="testimonial-text">“I went alone to write; left with a new novel outline and three
+                            new friends. Fireside chats with strangers turned into deep conversations. Magical spot.”
+                        </div>
+                        <div class="guest-name">— Sophie M.</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="verified">Verified stay</div>
+                        <div class="testimonial-text">“The jump from standard hotels to this one? The attention to local
+                            art, the morning rowboat, the stillness. Hands down the best place for a digital detox.”
+                        </div>
+                        <div class="guest-name">— Derek H.</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="verified">Verified stay</div>
+                        <div class="testimonial-text">“Got this weekend as an anniversary gift. The fireplace in the
+                            library suite + sunset views = unforgettable. The team even surprised us with a bottle of
+                            local wine.”</div>
+                        <div class="guest-name">— Anita & Ramon</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="verified">Verified stay</div>
+                        <div class="testimonial-text">“I’ve stayed at the Attic twice now — the reading nook looks
+                            directly onto the lake. The staff is warm without being intrusive. Feels like staying with
+                            old friends.”</div>
+                        <div class="guest-name">— Elliott Z.</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="verified">Verified stay</div>
+                        <div class="testimonial-text">“An unexpected masterpiece. From the curated breakfast basket to
+                            the handwritten local trails. The design is thoughtful, never pretentious. Love the
+                            details.”</div>
+                        <div class="guest-name">— Nadia S.</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="verified">Verified stay</div>
+                        <div class="testimonial-text">“My first lakeside retreat and I'm absolutely in love. The way the
+                            morning light filters through the fog, the wood floors... it’s pure poetry. Highly
+                            recommended.”</div>
+                        <div class="guest-name">— Grace O.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA & footer - Don't be a stranger -->
+            <div class="cta-footer" id="stay">
+                <h3>Don’t Be A Stranger</h3>
+                <div class="get-in-touch">Get in touch — for reservations, private events, or just to say hello</div>
+                <div class="contact-links">
+                    <a href="#">hello@thecallewick.com</a>
+                    <a href="#">+44 (0) 1539 222 640</a>
+                    <a href="#">Callewick Manor, Lake District, UK</a>
+                </div>
+                <div class="copyright">
+                    © The Callewick — where hours unfold like stories.
+                </div>
+            </div>
+        </main>
+    </div>
+    <!-- subtle scroll behavior -->
+    <script>
+        (function () {
+            // smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+
+</html>

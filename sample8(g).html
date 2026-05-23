@@ -1,0 +1,2652 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Vrindavan — Sacred Comfort</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cinzel:wght@400;500;600&family=Nunito+Sans:wght@300;400;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --gold: #C9A84C;
+            --gold-light: #E8CC80;
+            --gold-pale: #F5E9C8;
+            --indigo: #1A1035;
+            --indigo-mid: #2D1E5A;
+            --peacock: #1B6B5A;
+            --peacock-light: #2A9E82;
+            --cream: #FAF5E8;
+            --warm-white: #FDF9F0;
+            --text-dark: #2A1F0E;
+            --text-mid: #5C4A2A;
+            --border: rgba(201, 168, 76, 0.25);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Nunito Sans', sans-serif;
+            background: var(--warm-white);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* ─── PAGES ─── */
+        .page {
+            display: none;
+            min-height: 100vh;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* ─── NAV ─── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 3rem;
+            height: 72px;
+            background: rgba(26, 16, 53, 0.96);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .nav-logo-icon {
+            width: 38px;
+            height: 38px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .nav-logo-text {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-light);
+            font-size: 1.15rem;
+            letter-spacing: 0.08em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.75);
+            text-decoration: none;
+            cursor: pointer;
+            transition: color 0.25s;
+            padding: 4px 0;
+            border-bottom: 1px solid transparent;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--gold-light);
+            border-bottom-color: var(--gold);
+        }
+
+        .nav-book-btn {
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            color: var(--indigo) !important;
+            padding: 8px 20px !important;
+            border-radius: 2px;
+            border-bottom: none !important;
+            font-weight: 700 !important;
+        }
+
+        .nav-book-btn:hover {
+            opacity: 0.9;
+            color: var(--indigo) !important;
+        }
+
+        /* ─── HERO ─── */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(to bottom, rgba(26, 16, 53, 0.6) 0%, rgba(26, 16, 53, 0.3) 50%, rgba(26, 16, 53, 0.75) 100%),
+                url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1600&q=80') center/cover no-repeat;
+        }
+
+        .hero-pattern {
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle at 20% 50%, rgba(201, 168, 76, 0.06) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(27, 107, 90, 0.06) 0%, transparent 50%);
+        }
+
+        /* SVG Decorative elements */
+        .deco-peacock-hero {
+            position: absolute;
+            right: 5%;
+            bottom: 10%;
+            width: 220px;
+            opacity: 0.12;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .deco-flute {
+            position: absolute;
+            left: 4%;
+            top: 35%;
+            width: 80px;
+            opacity: 0.15;
+            transform: rotate(-30deg);
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(-30deg);
+            }
+
+            50% {
+                transform: translateY(-12px) rotate(-30deg);
+            }
+        }
+
+        @keyframes float2 {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            animation: fadeUp 1s ease forwards;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-eyebrow {
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .hero-eyebrow::before,
+        .hero-eyebrow::after {
+            content: '';
+            width: 40px;
+            height: 1px;
+            background: var(--gold);
+            opacity: 0.6;
+        }
+
+        .hero-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3.5rem, 8vw, 6.5rem);
+            font-weight: 300;
+            color: #fff;
+            line-height: 1.05;
+            margin-bottom: 0.4rem;
+            letter-spacing: -0.01em;
+        }
+
+        .hero-title em {
+            font-style: italic;
+            color: var(--gold-light);
+        }
+
+        .hero-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.65);
+            font-style: italic;
+            margin-bottom: 2.5rem;
+            letter-spacing: 0.04em;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            color: var(--indigo);
+            border: none;
+            padding: 14px 36px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            clip-path: polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(201, 168, 76, 0.35);
+        }
+
+        .btn-outline {
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            background: transparent;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.45);
+            padding: 14px 36px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--gold);
+            color: var(--gold-light);
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, transparent, var(--gold));
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollPulse {
+
+            0%,
+            100% {
+                opacity: 0.4;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* ─── SECTION COMMONS ─── */
+        .section {
+            padding: 6rem 2rem;
+        }
+
+        .section-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-tag {
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--peacock-light);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-tag::after {
+            content: '';
+            flex: 1;
+            max-width: 50px;
+            height: 1px;
+            background: var(--peacock-light);
+            opacity: 0.5;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 400;
+            color: var(--indigo);
+            line-height: 1.15;
+            margin-bottom: 1.2rem;
+        }
+
+        .section-title em {
+            font-style: italic;
+            color: var(--peacock);
+        }
+
+        .section-desc {
+            font-size: 0.95rem;
+            line-height: 1.85;
+            color: var(--text-mid);
+            max-width: 520px;
+        }
+
+        /* ─── ABOUT SECTION ─── */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .about-images {
+            position: relative;
+            height: 520px;
+        }
+
+        .about-img-main {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 72%;
+            height: 80%;
+            object-fit: cover;
+            border-radius: 2px;
+            box-shadow: 0 20px 60px rgba(26, 16, 53, 0.15);
+        }
+
+        .about-img-side {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 52%;
+            height: 55%;
+            object-fit: cover;
+            border-radius: 2px;
+            box-shadow: 0 20px 60px rgba(26, 16, 53, 0.15);
+            border: 4px solid var(--warm-white);
+        }
+
+        .about-badge {
+            position: absolute;
+            top: 55%;
+            left: 58%;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 24px rgba(201, 168, 76, 0.4);
+            z-index: 10;
+        }
+
+        .about-badge-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--indigo);
+            line-height: 1;
+        }
+
+        .about-badge-text {
+            font-size: 0.6rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--indigo);
+            font-weight: 700;
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .about-feat {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            background: rgba(201, 168, 76, 0.03);
+            transition: all 0.3s;
+        }
+
+        .about-feat:hover {
+            border-color: var(--gold);
+            background: rgba(201, 168, 76, 0.06);
+        }
+
+        .about-feat-icon {
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .about-feat-label {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            letter-spacing: 0.03em;
+        }
+
+        .about-feat-sub {
+            font-size: 0.7rem;
+            color: var(--text-mid);
+            margin-top: 2px;
+        }
+
+        /* ─── DIVIDER ─── */
+        .ornament-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            padding: 0 2rem;
+            margin: 0.5rem 0 2rem;
+        }
+
+        .ornament-divider::before,
+        .ornament-divider::after {
+            content: '';
+            flex: 1;
+            max-width: 200px;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--gold));
+        }
+
+        .ornament-divider::after {
+            background: linear-gradient(to left, transparent, var(--gold));
+        }
+
+        .ornament-center {
+            color: var(--gold);
+            font-size: 1.2rem;
+        }
+
+        /* ─── ROOMS ─── */
+        .rooms-section {
+            background: var(--cream);
+        }
+
+        .rooms-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 3rem;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .rooms-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .room-card {
+            background: #fff;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(26, 16, 53, 0.06);
+            transition: all 0.4s;
+            cursor: pointer;
+            border: 1px solid rgba(201, 168, 76, 0.1);
+        }
+
+        .room-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 48px rgba(26, 16, 53, 0.12);
+            border-color: rgba(201, 168, 76, 0.4);
+        }
+
+        .room-img-wrap {
+            position: relative;
+            overflow: hidden;
+            height: 220px;
+        }
+
+        .room-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s;
+        }
+
+        .room-card:hover .room-img-wrap img {
+            transform: scale(1.07);
+        }
+
+        .room-tag {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: var(--indigo);
+            color: var(--gold-light);
+            font-size: 0.62rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 2px;
+        }
+
+        .room-price-badge {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            color: var(--indigo);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 2px;
+        }
+
+        .room-body {
+            padding: 1.5rem;
+        }
+
+        .room-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: var(--indigo);
+            margin-bottom: 0.5rem;
+        }
+
+        .room-desc {
+            font-size: 0.82rem;
+            color: var(--text-mid);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .room-amenities {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 1.2rem;
+        }
+
+        .amenity-chip {
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            color: var(--peacock);
+            background: rgba(27, 107, 90, 0.08);
+            border: 1px solid rgba(27, 107, 90, 0.2);
+            padding: 3px 10px;
+            border-radius: 20px;
+        }
+
+        .room-book-btn {
+            width: 100%;
+            padding: 10px;
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--text-dark);
+            font-family: 'Cinzel', serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .room-book-btn:hover {
+            background: var(--gold);
+            color: var(--indigo);
+        }
+
+        /* Gallery strip inside room detail */
+        .room-gallery-strip {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 1rem;
+        }
+
+        .room-gallery-strip img {
+            width: 60px;
+            height: 46px;
+            object-fit: cover;
+            border-radius: 2px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border-color 0.2s;
+            flex-shrink: 0;
+        }
+
+        .room-gallery-strip img:hover {
+            border-color: var(--gold);
+        }
+
+        /* ─── FACILITIES ─── */
+        .facilities-section {
+            background: var(--indigo);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .facilities-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 70% 50%, rgba(27, 107, 90, 0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 20% 80%, rgba(201, 168, 76, 0.08) 0%, transparent 50%);
+        }
+
+        .facilities-section .section-title {
+            color: #fff;
+        }
+
+        .facilities-section .section-tag {
+            color: var(--gold);
+        }
+
+        .facilities-section .section-tag::after {
+            background: var(--gold);
+        }
+
+        .fac-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5px;
+            margin-top: 3rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .fac-item {
+            padding: 2.5rem 1.5rem;
+            background: rgba(255, 255, 255, 0.02);
+            text-align: center;
+            transition: background 0.3s;
+            position: relative;
+        }
+
+        .fac-item:hover {
+            background: rgba(201, 168, 76, 0.06);
+        }
+
+        .fac-icon {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .fac-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.05rem;
+            color: #fff;
+            margin-bottom: 0.4rem;
+            font-weight: 500;
+        }
+
+        .fac-desc {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.45);
+            line-height: 1.6;
+        }
+
+        /* ─── EXPERIENCE / FEATURES ─── */
+        .exp-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .exp-card {
+            padding: 2rem;
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .exp-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--gold), var(--peacock));
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform 0.3s;
+        }
+
+        .exp-card:hover {
+            border-color: var(--gold);
+        }
+
+        .exp-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .exp-icon {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .exp-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            color: var(--indigo);
+            margin-bottom: 0.4rem;
+        }
+
+        .exp-text {
+            font-size: 0.82rem;
+            color: var(--text-mid);
+            line-height: 1.7;
+        }
+
+        /* ─── TESTIMONIALS ─── */
+        .testi-section {
+            background: linear-gradient(135deg, var(--indigo-mid) 0%, var(--indigo) 100%);
+        }
+
+        .testi-section .section-title {
+            color: #fff;
+        }
+
+        .testi-section .section-desc {
+            color: rgba(255, 255, 255, 0.55);
+        }
+
+        .testi-section .section-tag {
+            color: var(--gold);
+        }
+
+        .testi-section .section-tag::after {
+            background: var(--gold);
+        }
+
+        .testi-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .testi-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(201, 168, 76, 0.15);
+            padding: 2rem;
+            border-radius: 2px;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .testi-card:hover {
+            background: rgba(201, 168, 76, 0.06);
+            border-color: rgba(201, 168, 76, 0.35);
+        }
+
+        .testi-quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            color: var(--gold);
+            line-height: 0.5;
+            margin-bottom: 1rem;
+            opacity: 0.4;
+        }
+
+        .testi-text {
+            font-size: 0.88rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.75);
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+
+        .testi-author {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .testi-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), var(--peacock));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #fff;
+            font-size: 0.85rem;
+        }
+
+        .testi-name {
+            font-family: 'Cinzel', serif;
+            font-size: 0.75rem;
+            color: var(--gold-light);
+            letter-spacing: 0.08em;
+        }
+
+        .testi-loc {
+            font-size: 0.68rem;
+            color: rgba(255, 255, 255, 0.4);
+            margin-top: 2px;
+        }
+
+        .stars {
+            color: var(--gold);
+            font-size: 0.75rem;
+            margin-bottom: 0.8rem;
+        }
+
+        /* ─── GALLERY PAGE ─── */
+        .gallery-hero {
+            height: 45vh;
+            background: linear-gradient(rgba(26, 16, 53, 0.8), rgba(26, 16, 53, 0.7)),
+                url('https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=1400&q=80') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .page-hero-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            color: #fff;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 220px;
+            gap: 6px;
+            max-width: 1300px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            border-radius: 2px;
+        }
+
+        .gallery-item:nth-child(3n+1) {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(26, 16, 53, 0.7) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            display: flex;
+            align-items: flex-end;
+            padding: 1rem;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-label {
+            font-family: 'Cormorant Garamond', serif;
+            color: #fff;
+            font-size: 1rem;
+            font-style: italic;
+        }
+
+        /* ─── CONTACT PAGE ─── */
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
+            gap: 5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .contact-info-card {
+            background: var(--indigo);
+            padding: 2.5rem;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+            align-self: start;
+        }
+
+        .contact-info-card::before {
+            content: '🦚';
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            font-size: 8rem;
+            opacity: 0.04;
+        }
+
+        .contact-info-card .section-title {
+            color: #fff;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-detail-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(201, 168, 76, 0.1);
+            border: 1px solid rgba(201, 168, 76, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .contact-detail-label {
+            font-size: 0.68rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+
+        .contact-detail-value {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.5;
+        }
+
+        .contact-form {}
+
+        .form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: var(--indigo);
+            margin-bottom: 2rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-label {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-mid);
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .form-input,
+        .form-textarea,
+        .form-select {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid rgba(201, 168, 76, 0.3);
+            border-radius: 2px;
+            background: #fff;
+            color: var(--text-dark);
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 0.88rem;
+            outline: none;
+            transition: border-color 0.25s;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus,
+        .form-select:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.08);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* ─── BOOKING PAGE ─── */
+        .booking-page {
+            background: var(--cream);
+        }
+
+        .booking-hero {
+            height: 40vh;
+            background: linear-gradient(rgba(26, 16, 53, 0.85), rgba(26, 16, 53, 0.75)),
+                url('https://images.unsplash.com/photo-1587985064135-0366536eab42?w=1400&q=80') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .booking-form-wrap {
+            max-width: 800px;
+            margin: -60px auto 4rem;
+            background: #fff;
+            border-radius: 4px;
+            box-shadow: 0 20px 60px rgba(26, 16, 53, 0.12);
+            overflow: hidden;
+            position: relative;
+            z-index: 2;
+            border: 1px solid var(--border);
+        }
+
+        .booking-form-header {
+            background: var(--indigo);
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .booking-form-header h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-light);
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+        }
+
+        .booking-form-body {
+            padding: 2.5rem;
+        }
+
+        .booking-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .booking-summary {
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            padding: 0 2rem;
+        }
+
+        .room-select-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .room-select-card {
+            border: 2px solid var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .room-select-card.selected,
+        .room-select-card:hover {
+            border-color: var(--gold);
+        }
+
+        .room-select-card.selected {
+            box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.15);
+        }
+
+        .room-select-card img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+        }
+
+        .room-select-info {
+            padding: 0.75rem;
+        }
+
+        .room-select-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            color: var(--indigo);
+            margin-bottom: 2px;
+        }
+
+        .room-select-price {
+            font-size: 0.78rem;
+            color: var(--peacock);
+            font-weight: 600;
+        }
+
+        /* ─── FOOTER ─── */
+        footer {
+            background: var(--indigo);
+            border-top: 1px solid rgba(201, 168, 76, 0.15);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand-desc {
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.45);
+            line-height: 1.8;
+            margin-top: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-btn {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            border: 1px solid rgba(201, 168, 76, 0.25);
+            background: transparent;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-btn:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            background: rgba(201, 168, 76, 0.08);
+        }
+
+        .footer-col-title {
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 1.2rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.6rem;
+        }
+
+        .footer-links a {
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.45);
+            text-decoration: none;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold-light);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-bottom-text {
+            font-size: 0.72rem;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .footer-mantra {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.85rem;
+            color: var(--gold);
+            font-style: italic;
+            opacity: 0.7;
+        }
+
+        /* ─── PEACOCK SVG DECO ─── */
+        .peacock-feather-deco {
+            position: absolute;
+            opacity: 0.06;
+            pointer-events: none;
+        }
+
+        /* ─── SCROLL ANIMATIONS ─── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ─── CTA STRIP ─── */
+        .cta-strip {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold) 100%);
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-strip::before {
+            content: '🦚';
+            position: absolute;
+            left: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 5rem;
+            opacity: 0.12;
+        }
+
+        .cta-strip::after {
+            content: '🦚';
+            position: absolute;
+            right: 5%;
+            top: 50%;
+            transform: translateY(-50%) scaleX(-1);
+            font-size: 5rem;
+            opacity: 0.12;
+        }
+
+        .cta-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            color: var(--indigo);
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+
+        .cta-sub {
+            font-size: 0.88rem;
+            color: var(--indigo);
+            opacity: 0.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-dark {
+            font-family: 'Cinzel', serif;
+            font-size: 0.72rem;
+            letter-spacing: 0.18em;
+            background: var(--indigo);
+            color: var(--gold-light);
+            border: none;
+            padding: 14px 36px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+        }
+
+        .btn-dark:hover {
+            background: var(--indigo-mid);
+            transform: translateY(-2px);
+        }
+
+        /* ─── MOBILE ─── */
+        @media (max-width: 900px) {
+            nav {
+                padding: 0 1.2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-images {
+                height: 300px;
+                margin-bottom: 2rem;
+            }
+
+            .rooms-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .fac-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .testi-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-inner {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .booking-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .room-select-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-item:nth-child(3n+1) {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+
+            .exp-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ═══════════ NAV ═══════════ -->
+    <nav>
+        <a class="nav-logo" onclick="showPage('home')">
+            <div class="nav-logo-icon">🦚</div>
+            <span class="nav-logo-text">Hotel Vrindavan</span>
+        </a>
+        <ul class="nav-links">
+            <li><a onclick="showPage('home')" id="nav-home" class="active">Home</a></li>
+            <li><a onclick="showPage('rooms')" id="nav-rooms">Rooms</a></li>
+            <li><a onclick="showPage('gallery')" id="nav-gallery">Gallery</a></li>
+            <li><a onclick="showPage('contact')" id="nav-contact">Contact</a></li>
+            <li><a onclick="showPage('booking')" id="nav-booking" class="nav-book-btn">Book Now</a></li>
+        </ul>
+    </nav>
+
+    <!-- ═══════════════════════════════════════
+     PAGE: HOME
+═══════════════════════════════════════ -->
+    <div id="page-home" class="page active">
+
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-bg"></div>
+            <div class="hero-pattern"></div>
+
+            <!-- Peacock SVG -->
+            <svg class="deco-peacock-hero" viewBox="0 0 200 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="100" cy="200" rx="30" ry="80" fill="#C9A84C" />
+                <circle cx="100" cy="80" r="25" fill="#C9A84C" />
+                <path d="M100 55 Q110 20 130 10 Q115 30 120 50" stroke="#C9A84C" stroke-width="2" />
+                <path d="M100 55 Q90 20 70 10 Q85 30 80 50" stroke="#C9A84C" stroke-width="2" />
+                <path d="M100 55 Q120 15 150 15 Q125 35 115 50" stroke="#C9A84C" stroke-width="2" />
+                <path d="M100 55 Q80 15 50 15 Q75 35 85 50" stroke="#C9A84C" stroke-width="2" />
+                <path d="M100 120 Q150 150 180 200 Q140 170 120 180" stroke="#C9A84C" stroke-width="1.5" />
+                <path d="M100 120 Q50 150 20 200 Q60 170 80 180" stroke="#C9A84C" stroke-width="1.5" />
+                <circle cx="130" cy="12" r="8" fill="none" stroke="#C9A84C" stroke-width="1.5" />
+                <circle cx="70" cy="12" r="8" fill="none" stroke="#C9A84C" stroke-width="1.5" />
+                <circle cx="150" cy="17" r="8" fill="none" stroke="#C9A84C" stroke-width="1.5" />
+                <circle cx="50" cy="17" r="8" fill="none" stroke="#C9A84C" stroke-width="1.5" />
+            </svg>
+
+            <!-- Flute SVG -->
+            <svg class="deco-flute" viewBox="0 0 30 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="13" y="0" width="4" height="200" rx="2" fill="#C9A84C" />
+                <circle cx="15" cy="40" r="3" fill="none" stroke="#C9A84C" stroke-width="1.5" />
+                <circle cx="15" cy="65" r="3" fill="none" stroke="#C9A84C" stroke-width="1.5" />
+                <circle cx="15" cy="90" r="3" fill="none" stroke="#C9A84C" stroke-width="1.5" />
+                <circle cx="15" cy="115" r="3" fill="none" stroke="#C9A84C" stroke-width="1.5" />
+                <circle cx="15" cy="140" r="3" fill="none" stroke="#C9A84C" stroke-width="1.5" />
+            </svg>
+
+            <div class="hero-content">
+                <p class="hero-eyebrow">🪷 Vrindavan, Mathura</p>
+                <h1 class="hero-title">Hotel <em>Vrindavan</em></h1>
+                <p class="hero-subtitle">Where devotion meets comfort — near the sacred dhams</p>
+                <div class="hero-actions">
+                    <button class="btn-primary" onclick="showPage('booking')">Book Your Stay</button>
+                    <button class="btn-outline" onclick="showPage('rooms')">Explore Rooms</button>
+                </div>
+            </div>
+
+            <div class="hero-scroll">
+                <span>Scroll</span>
+                <div class="scroll-line"></div>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section class="section">
+            <div class="section-inner">
+                <div class="about-grid">
+                    <div class="about-images">
+                        <img class="about-img-main"
+                            src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=800&q=80"
+                            alt="Hotel Lobby" loading="lazy">
+                        <img class="about-img-side"
+                            src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&q=80"
+                            alt="Hotel Room" loading="lazy">
+                        <div class="about-badge">
+                            <span class="about-badge-num">18</span>
+                            <span class="about-badge-text">Cozy<br>Rooms</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <p class="section-tag">About Us</p>
+                        <h2 class="section-title">A Sacred <em>Refuge</em><br>in Vrindavan</h2>
+                        <p class="section-desc">
+                            Nestled close to the holy temples of Vrindavan, Hotel Vrindavan is a modest,
+                            warm retreat for pilgrims and travellers seeking peace after a day of darshan.
+                            We offer clean, comfortable rooms with heartfelt hospitality — no extravagance,
+                            just genuine care and serenity.
+                        </p>
+
+                        <div class="about-features">
+                            <div class="about-feat">
+                                <span class="about-feat-icon">🛕</span>
+                                <div>
+                                    <div class="about-feat-label">Temple Proximity</div>
+                                    <div class="about-feat-sub">5 min walk to Banke Bihari</div>
+                                </div>
+                            </div>
+                            <div class="about-feat">
+                                <span class="about-feat-icon">🍽️</span>
+                                <div>
+                                    <div class="about-feat-label">Sattvic Meals</div>
+                                    <div class="about-feat-sub">Pure veg, freshly cooked</div>
+                                </div>
+                            </div>
+                            <div class="about-feat">
+                                <span class="about-feat-icon">🅿️</span>
+                                <div>
+                                    <div class="about-feat-label">Free Parking</div>
+                                    <div class="about-feat-sub">Safe, on-site parking</div>
+                                </div>
+                            </div>
+                            <div class="about-feat">
+                                <span class="about-feat-icon">📶</span>
+                                <div>
+                                    <div class="about-feat-label">Free Wi-Fi</div>
+                                    <div class="about-feat-sub">High-speed connectivity</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                            <button class="btn-primary" onclick="showPage('rooms')">View Rooms</button>
+                            <button class="btn-outline" style="color: var(--indigo); border-color: rgba(26,16,53,0.3);"
+                                onclick="showPage('contact')">Get in Touch</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="ornament-divider"><span class="ornament-center">🪈</span></div>
+
+        <!-- ROOMS PREVIEW -->
+        <section class="section rooms-section">
+            <div class="section-inner">
+                <div class="rooms-header">
+                    <div>
+                        <p class="section-tag">Our Rooms</p>
+                        <h2 class="section-title">Choose Your <em>Sanctuary</em></h2>
+                    </div>
+                    <button class="btn-outline"
+                        style="color: var(--indigo); border-color: var(--gold); white-space: nowrap;"
+                        onclick="showPage('rooms')">All Rooms →</button>
+                </div>
+
+                <div class="rooms-grid">
+                    <!-- Room 1 -->
+                    <div class="room-card">
+                        <div class="room-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&q=80"
+                                alt="Standard Room" loading="lazy">
+                            <div class="room-tag">Standard</div>
+                            <div class="room-price-badge">₹1,800/Night</div>
+                        </div>
+                        <div class="room-body">
+                            <h3 class="room-name">Krishna Niwas</h3>
+                            <p class="room-desc">A simple, well-appointed room with all essentials. Peaceful, clean, and
+                                perfectly suited for the devout pilgrim.</p>
+                            <div class="room-amenities">
+                                <span class="amenity-chip">🛏 1 Double Bed</span>
+                                <span class="amenity-chip">🚿 Attached Bath</span>
+                                <span class="amenity-chip">📶 Wi-Fi</span>
+                                <span class="amenity-chip">❄️ AC</span>
+                            </div>
+                            <button class="room-book-btn" onclick="showPage('booking')">Book Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Room 2 -->
+                    <div class="room-card">
+                        <div class="room-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=600&q=80"
+                                alt="Deluxe Room" loading="lazy">
+                            <div class="room-tag">Deluxe</div>
+                            <div class="room-price-badge">₹2,500/Night</div>
+                        </div>
+                        <div class="room-body">
+                            <h3 class="room-name">Radha Kunj</h3>
+                            <p class="room-desc">Extra space with a comfortable sitting area. Ideal for couples or small
+                                families on a sacred journey.</p>
+                            <div class="room-amenities">
+                                <span class="amenity-chip">🛏 1 King Bed</span>
+                                <span class="amenity-chip">🚿 Attached Bath</span>
+                                <span class="amenity-chip">📶 Wi-Fi</span>
+                                <span class="amenity-chip">❄️ AC</span>
+                                <span class="amenity-chip">🛋 Sitting Area</span>
+                            </div>
+                            <button class="room-book-btn" onclick="showPage('booking')">Book Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Room 3 -->
+                    <div class="room-card">
+                        <div class="room-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=600&q=80"
+                                alt="Family Room" loading="lazy">
+                            <div class="room-tag">Family</div>
+                            <div class="room-price-badge">₹3,200/Night</div>
+                        </div>
+                        <div class="room-body">
+                            <h3 class="room-name">Gokulam Suite</h3>
+                            <p class="room-desc">Spacious room with two beds, perfect for families visiting the dhams
+                                together in peace and comfort.</p>
+                            <div class="room-amenities">
+                                <span class="amenity-chip">🛏 2 Double Beds</span>
+                                <span class="amenity-chip">🚿 Attached Bath</span>
+                                <span class="amenity-chip">📶 Wi-Fi</span>
+                                <span class="amenity-chip">❄️ AC</span>
+                                <span class="amenity-chip">🅿 Parking</span>
+                            </div>
+                            <button class="room-book-btn" onclick="showPage('booking')">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FACILITIES -->
+        <section class="section facilities-section">
+            <div class="section-inner" style="position:relative; z-index:1;">
+                <div style="text-align:center; margin-bottom: 1rem;">
+                    <p class="section-tag" style="justify-content:center;">Facilities</p>
+                    <h2 class="section-title" style="text-align:center; color:#fff;">Everything You <em
+                            style="color:var(--gold-light)">Need</em></h2>
+                    <p style="color:rgba(255,255,255,0.5); font-size:0.88rem; max-width:500px; margin:0 auto;">Simple,
+                        thoughtful amenities for a comfortable, worry-free stay.</p>
+                </div>
+                <div class="fac-grid">
+                    <div class="fac-item"><span class="fac-icon">❄️</span>
+                        <p class="fac-name">Air Conditioning</p>
+                        <p class="fac-desc">All rooms fully climate controlled</p>
+                    </div>
+                    <div class="fac-item"><span class="fac-icon">📶</span>
+                        <p class="fac-name">Free Wi-Fi</p>
+                        <p class="fac-desc">High-speed internet throughout</p>
+                    </div>
+                    <div class="fac-item"><span class="fac-icon">🅿️</span>
+                        <p class="fac-name">Parking</p>
+                        <p class="fac-desc">Safe on-site vehicle parking</p>
+                    </div>
+                    <div class="fac-item"><span class="fac-icon">🍽️</span>
+                        <p class="fac-name">Sattvic Dining</p>
+                        <p class="fac-desc">Pure vegetarian meals served fresh</p>
+                    </div>
+                    <div class="fac-item"><span class="fac-icon">🚿</span>
+                        <p class="fac-name">Hot Water</p>
+                        <p class="fac-desc">24-hour hot water supply</p>
+                    </div>
+                    <div class="fac-item"><span class="fac-icon">📺</span>
+                        <p class="fac-name">TV</p>
+                        <p class="fac-desc">Cable channels in every room</p>
+                    </div>
+                    <div class="fac-item"><span class="fac-icon">🛕</span>
+                        <p class="fac-name">Temple Access</p>
+                        <p class="fac-desc">Walking distance to major mandirs</p>
+                    </div>
+                    <div class="fac-item"><span class="fac-icon">🧹</span>
+                        <p class="fac-name">Daily Housekeeping</p>
+                        <p class="fac-desc">Rooms cleaned & refreshed daily</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXPERIENCE -->
+        <section class="section">
+            <div class="section-inner">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;">
+                    <div>
+                        <p class="section-tag">The Experience</p>
+                        <h2 class="section-title">More Than a <em>Stay</em></h2>
+                        <p class="section-desc" style="margin-bottom: 2rem;">
+                            At Hotel Vrindavan, we believe your journey doesn't end at the temple door.
+                            We help make every moment of your visit sacred and serene.
+                        </p>
+                        <div class="exp-grid">
+                            <div class="exp-card">
+                                <div class="exp-icon">🪈</div>
+                                <div class="exp-name">Devotional Ambience</div>
+                                <p class="exp-text">Soft bhajan music, floral decor, and a calm atmosphere that honours
+                                    the spirit of Vrindavan.</p>
+                            </div>
+                            <div class="exp-card">
+                                <div class="exp-icon">🦚</div>
+                                <div class="exp-name">Pilgrimage Guidance</div>
+                                <p class="exp-text">Our staff can help plan temple visits, parikrama timings, and local
+                                    dham routes.</p>
+                            </div>
+                            <div class="exp-card">
+                                <div class="exp-icon">🌿</div>
+                                <div class="exp-name">Pure Vegetarian</div>
+                                <p class="exp-text">Only sattvic, freshly cooked meals — prepared with love, no onion or
+                                    garlic.</p>
+                            </div>
+                            <div class="exp-card">
+                                <div class="exp-icon">🤝</div>
+                                <div class="exp-name">Warm Hospitality</div>
+                                <p class="exp-text">A small hotel means personal attention. We treat every guest like
+                                    family.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="position: relative;">
+                        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=700&q=80"
+                            alt="Hotel corridor"
+                            style="width: 100%; height: 520px; object-fit: cover; border-radius: 2px; box-shadow: 0 24px 60px rgba(26,16,53,0.15);">
+                        <!-- Peacock feather accent -->
+                        <div
+                            style="position:absolute; bottom: -20px; left: -20px; width: 80px; height: 80px; background: linear-gradient(135deg, var(--gold), var(--gold-light)); border-radius: 50%; display: flex; align-items:center; justify-content:center; font-size:2rem; box-shadow: 0 8px 24px rgba(201,168,76,0.3);">
+                            🦚</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIALS -->
+        <section class="section testi-section">
+            <div class="section-inner">
+                <div style="text-align:center;">
+                    <p class="section-tag" style="justify-content:center;">Guest Stories</p>
+                    <h2 class="section-title">What Our Guests <em style="color:var(--gold-light)">Say</em></h2>
+                </div>
+                <div class="testi-grid">
+                    <div class="testi-card">
+                        <div class="testi-quote">"</div>
+                        <div class="stars">★★★★★</div>
+                        <p class="testi-text">The location is perfect — we could hear the bells from Banke Bihari from
+                            our room. Clean, homely, and the food was just wonderful. Will definitely return next year.
+                        </p>
+                        <div class="testi-author">
+                            <div class="testi-avatar">RS</div>
+                            <div>
+                                <div class="testi-name">Ramesh Sharma</div>
+                                <div class="testi-loc">Jaipur, Rajasthan</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testi-card">
+                        <div class="testi-quote">"</div>
+                        <div class="stars">★★★★★</div>
+                        <p class="testi-text">Came for Janmashtami with the whole family. The Gokulam Suite was spacious
+                            and comfortable. Staff helped us with temple timings and local guidance. Truly a blessed
+                            stay.</p>
+                        <div class="testi-author">
+                            <div class="testi-avatar">PM</div>
+                            <div>
+                                <div class="testi-name">Priya Mehta</div>
+                                <div class="testi-loc">Mumbai, Maharashtra</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testi-card">
+                        <div class="testi-quote">"</div>
+                        <div class="stars">★★★★☆</div>
+                        <p class="testi-text">Simple, honest accommodation. No unnecessary frills — exactly what a
+                            pilgrim needs. The sattvic meals were fresh and delicious. Peaceful surroundings. Highly
+                            recommend.</p>
+                        <div class="testi-author">
+                            <div class="testi-avatar">AG</div>
+                            <div>
+                                <div class="testi-name">Ankit Gupta</div>
+                                <div class="testi-loc">Delhi, NCR</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <div class="cta-strip">
+            <p class="cta-title">Begin Your Sacred Journey</p>
+            <p class="cta-sub">Book your stay at Hotel Vrindavan today</p>
+            <button class="btn-dark" onclick="showPage('booking')">Reserve a Room</button>
+        </div>
+
+        <!-- FOOTER -->
+        <footer>
+            <div class="footer-inner">
+                <div>
+                    <div class="nav-logo" style="cursor:default;">
+                        <div class="nav-logo-icon">🦚</div>
+                        <span class="nav-logo-text">Hotel Vrindavan</span>
+                    </div>
+                    <p class="footer-brand-desc">A peaceful, devotional retreat near the sacred temples of Vrindavan.
+                        Serving pilgrims and travellers with warmth and humility.</p>
+                    <div class="footer-social">
+                        <button class="social-btn">f</button>
+                        <button class="social-btn">in</button>
+                        <button class="social-btn">✉</button>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-col-title">Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a onclick="showPage('home')">Home</a></li>
+                        <li><a onclick="showPage('rooms')">Rooms</a></li>
+                        <li><a onclick="showPage('gallery')">Gallery</a></li>
+                        <li><a onclick="showPage('contact')">Contact</a></li>
+                        <li><a onclick="showPage('booking')">Book Now</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-col-title">Facilities</h4>
+                    <ul class="footer-links">
+                        <li><a>Free Wi-Fi</a></li>
+                        <li><a>Parking</a></li>
+                        <li><a>Sattvic Dining</a></li>
+                        <li><a>Hot Water</a></li>
+                        <li><a>AC Rooms</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-col-title">Contact</h4>
+                    <ul class="footer-links">
+                        <li><a>📍 Near Banke Bihari Temple, Vrindavan, UP</a></li>
+                        <li><a>📞 +91 99999 88888</a></li>
+                        <li><a>✉ stay@hotelvrindavan.in</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span class="footer-bottom-text">© 2025 Hotel Vrindavan. All rights reserved.</span>
+                <span class="footer-mantra">🪷 Radhe Radhe — May your stay be blessed</span>
+            </div>
+        </footer>
+    </div>
+
+
+    <!-- ═══════════════════════════════════════
+     PAGE: ROOMS
+═══════════════════════════════════════ -->
+    <div id="page-rooms" class="page">
+        <div style="height:72px;"></div>
+
+        <div style="background: var(--cream); padding: 4rem 2rem 2rem;">
+            <div class="section-inner">
+                <p class="section-tag">Accommodation</p>
+                <h1 class="section-title">Our <em>Rooms</em></h1>
+                <p class="section-desc">Each room is clean, comfortable, and thoughtfully arranged for a restful stay
+                    after your temple visits.</p>
+            </div>
+        </div>
+
+        <section class="section" style="padding-top: 3rem;">
+            <div class="section-inner">
+
+                <!-- ROOM DETAIL 1 -->
+                <div
+                    style="display:grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items:start; margin-bottom: 5rem; padding-bottom: 5rem; border-bottom: 1px solid var(--border);">
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80"
+                            alt="Krishna Niwas"
+                            style="width:100%; height:360px; object-fit:cover; border-radius:4px; margin-bottom:8px;">
+                        <div class="room-gallery-strip">
+                            <img src="https://images.unsplash.com/photo-1583845112203-29329902332e?w=200&q=70"
+                                alt="Bath">
+                            <img src="https://images.unsplash.com/photo-1556909212-d5b604d0c90d?w=200&q=70"
+                                alt="Window view">
+                            <img src="https://images.unsplash.com/photo-1540518614846-7eded433c457?w=200&q=70"
+                                alt="Detail">
+                            <img src="https://images.unsplash.com/photo-1620626011761-996317702782?w=200&q=70"
+                                alt="Bathroom">
+                        </div>
+                    </div>
+                    <div>
+                        <div class="room-tag" style="position:static; display:inline-block; margin-bottom:1rem;">
+                            Standard</div>
+                        <h2 class="room-name" style="font-size: 2rem; margin-bottom: 0.5rem;">Krishna Niwas</h2>
+                        <p
+                            style="font-family:'Cormorant Garamond',serif; font-style:italic; color:var(--peacock); margin-bottom:1.5rem;">
+                            The abode of Krishna — simple, peaceful, and divine</p>
+                        <p style="font-size:0.88rem; color:var(--text-mid); line-height:1.8; margin-bottom:1.5rem;">Our
+                            standard room is thoughtfully furnished for comfort. Featuring a plush double bed, an
+                            attached bathroom with hot water, and calm decor inspired by Vrindavan's natural beauty.</p>
+
+                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem; margin-bottom:1.5rem;">
+                            <div
+                                style="padding:10px 14px; background:rgba(27,107,90,0.06); border:1px solid rgba(27,107,90,0.15); border-radius:3px; font-size:0.8rem; color:var(--peacock);">
+                                🛏 1 Double Bed</div>
+                            <div
+                                style="padding:10px 14px; background:rgba(27,107,90,0.06); border:1px solid rgba(27,107,90,0.15); border-radius:3px; font-size:0.8rem; color:var(--peacock);">
+                                🚿 Attached Bath</div>
+                            <div
+                                style="padding:10px 14px; background:rgba(27,107,90,0.06); border:1px solid rgba(27,107,90,0.15); border-radius:3px; font-size:0.8rem; color:var(--peacock);">
+                                ❄️ Air Conditioning</div>
+                            <div
+                                style="padding:10px 14px; background:rgba(27,107,90,0.06); border:1px solid rgba(27,107,90,0.15); border-radius:3px; font-size:0.8rem; color:var(--peacock);">
+                                📶 Free Wi-Fi</div>
+                            <div
+                                style="padding:10px 14px; background:rgba(27,107,90,0.06); border:1px solid rgba(27,107,90,0.15); border-radius:3px; font-size:0.8rem; color:var(--peacock);">
+                                📺 Television</div>
+                            <div
+                                style="padding:10px 14px; background:rgba(27,107,90,0.06); border:1px solid rgba(27,107,90,0.15); border-radius:3px; font-size:0.8rem; color:var(--peacock);">
+                                🔒 Secure Room</div>
+                        </div>
+
+                        <div
+                            style="background:var(--cream); border:1px solid var(--border); padding:1.2rem; border-radius:3px; margin-bottom:1.5rem; display:flex; justify-content:space-between; align-items:center;">
+                            <div>
+                                <div
+                                    style="font-size:0.65rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--text-mid); font-weight:700;">
+                                    Per Night</div>
+                                <div
+                                    style="font-family:'Cormorant Garamond',serif; font-size:2rem; color:var(--indigo); font-weight:600;">
+                                    ₹1,800</div>
+                            </div>
+                            <div style="font-size:0.75rem; color:var(--text-mid);">Taxes included</div>
+                        </div>
+                        <button class="btn-primary" style="width:100%;" onclick="showPage('booking')">Book Krishna
+                            Niwas</button>
+                    </div>
+                </div>
+
+                <!-- ROOM DETAIL 2 -->
+                <div
+                    style="display:grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items:start; margin-bottom: 5rem; padding-bottom: 5rem; border-bottom: 1px solid var(--border);">
+                    <div>
+                        <div class="room-tag" style="position:static; display:inline-block; margin-bottom:1rem;">Deluxe
+                        </div>
+                        <h2 class="room-name" style="font-size: 2rem; margin-bottom: 0.5rem;">Radha Kunj</h2>
+                        <p
+                            style="font-family:'Cormorant Garamond',serif; font-style:italic; color:var(--peacock); margin-bottom:1.5rem;">
+                            The garden of Radha — spacious, serene, and joyful</p>
+                        <p style="font-size:0.88rem; color:var(--text-mid); line-height:1.8; margin-bottom:1.5rem;">Our
+                            deluxe room offers more space with a dedicated sitting area. Perfect for couples visiting
+                            together. Light, airy, and decorated with subtle peacock-feather motifs.</p>
+
+                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem; margin-bottom:1.5rem;">
+                            <div
+                                style="padding:10px 14px; background:rgba(27,107,90,0.06); border:1px solid rgba(27,107,90,0.15); border-radius:3px; font-size:0.8rem; color:var(--peacock);">
+                                🛏 1 King Bed</div>
+                            <div
+                                style="padding:10px 14px; background:rgba(27,107,90,0.06); border:1px solid rgba(27,107,90,0.15); border-radius:3px; font-size:0.8rem; color:var(--peacock);">
+                                🛋 Sitting Area</div>
+                            <div
+                                style="padding:10px 14px; background:rgba(27,107,90,0.06); border:1px solid rgba(27,107,90,0.15); border-radius:3px; font-size:0.8rem; color:var(--peacock);">
+                                ❄️ Air Conditioning</div>
+                            <div
+                                style="padding:10px 14px; background:rgba(27,107,90,0.06); border:1px solid rgba(27,107,90,0.15); border-radius:3px; font-size:0.8rem; color:var(--peacock);">
+                                📶 Free Wi-Fi</div>
+                            <div
+                                style="padding:10px 14px; background:rgba(27,107,90,0.06); border:1px solid rgba(27,107,90,0.15); border-radius:3px; font-size:0.8rem; color:var(--peacock);">
+                                🚿 Attached Bath</div>
+                            <div
+                                style="padding:10px 14px; background:rgba(27,107,90,0.06); border:1px solid rgba(27,107,90,0.15); border-radius:3px; font-size:0.8rem; color:var(--peacock);">
+                                📺 Television</div>
+                        </div>
+
+                        <div
+                            style="background:var(--cream); border:1px solid var(--border); padding:1.2rem; border-radius:3px; margin-bottom:1.5rem; display:flex; justify-content:space-between; align-items:center;">
+                            <div>
+                                <div
+                                    style="font-size:0.65rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--text-mid); font-weight:700;">
+                                    Per Night</div>
+                                <div
+                                    style="font-family:'Cormorant Garamond',serif; font-size:2rem; color:var(--indigo); font-weight:600;">
+                                    ₹2,500</div>
+                            </div>
+                            <div style="font-size:0.75rem; color:var(--text-mid);">Taxes included</div>
+                        </div>
+                        <button class="btn-primary" style="width:100%;" onclick="showPage('booking')">Book Radha
+                            Kunj</button>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=800&q=80"
+                            alt="Radha Kunj"
+                            style="width:100%; height:360px; object-fit:cover; border-radius:4px; margin-bottom:8px;">
+                        <div class="room-gallery-strip">
+                            <img src="https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?w=200&q=70"
+                                alt="Seating">
+                            <img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?w=200&q=70"
+                                alt="Bath">
+                            <img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=200&q=70"
+                                alt="Decor">
+                            <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=200&q=70"
+                                alt="View">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ROOM DETAIL 3 -->
+                <div style="display:grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items:start;">
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&q=80"
+                            alt="Gokulam Suite"
+                            style="width:100%; height:360px; object-fit:cover; border-radius:4px; margin-bottom:8px;">
+                        <div class="room-gallery-strip">
+                            <img src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=200&q=70"
+                                alt="Room">
+                            <img src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=200&q=70"
+                                alt="Bath">
+                            <img src="https://images.unsplash.com/photo-1465301055284-72b16b01d90b?w=200&q=70"
+                                alt="Beds">
+                            <img src="https://images.unsplash.com/photo-1567225557594-88d73e55f2cb?w=200&q=70"
+                                alt="Window">
+                        </div>
+                    </div>
+                    <div>
+                        <div class="room-tag" style="position:static; display:inline-block; margin-bottom:1rem;">Family
+                        </div>
+                        <h2 class="room-name" style="font-size: 2rem; margin-bottom: 0.5rem;">Gokulam Suite</h2>
+                        <p
+                            style="font-family:'Cormorant Garamond',serif; font-style:italic; color:var(--peacock); margin-bottom:1.5rem;">
+                            The village of Gokul — made for togetherness</p>
+                        <p style="font-size:0.88rem; color:var(--text-mid); line-height:1.8; margin-bottom:1.5rem;">Our
+                            largest room, with two double beds, ideal for families. Generously sized, bright, and
+                            welcoming — because in Vrindavan, family is everything.</p>
+
+                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem; margin-bottom:1.5rem;">
+                            <div
+                                style="padding:10px 14px; background:rgba(27,107,90,0.06); border:1px solid rgba(27,107,90,0.15); border-radius:3px; font-size:0.8rem; color:var(--peacock);">
+                                🛏 2 Double Beds</div>
+                            <div
+                                style="padding:10px 14px; background:rgba(27,107,90,0.06); border:1px solid rgba(27,107,90,0.15); border-radius:3px; font-size:0.8rem; color:var(--peacock);">
+                                🚿 Attached Bath</div>
+                            <div
+                                style="padding:10px 14px; background:rgba(27,107,90,0.06); border:1px solid rgba(27,107,90,0.15); border-radius:3px; font-size:0.8rem; color:var(--peacock);">
+                                ❄️ Air Conditioning</div>
+                            <div
+                                style="padding:10px 14px; background:rgba(27,107,90,0.06); border:1px solid rgba(27,107,90,0.15); border-radius:3px; font-size:0.8rem; color:var(--peacock);">
+                                🅿 Free Parking</div>
+                            <div
+                                style="padding:10px 14px; background:rgba(27,107,90,0.06); border:1px solid rgba(27,107,90,0.15); border-radius:3px; font-size:0.8rem; color:var(--peacock);">
+                                📶 Free Wi-Fi</div>
+                            <div
+                                style="padding:10px 14px; background:rgba(27,107,90,0.06); border:1px solid rgba(27,107,90,0.15); border-radius:3px; font-size:0.8rem; color:var(--peacock);">
+                                📺 Television</div>
+                        </div>
+
+                        <div
+                            style="background:var(--cream); border:1px solid var(--border); padding:1.2rem; border-radius:3px; margin-bottom:1.5rem; display:flex; justify-content:space-between; align-items:center;">
+                            <div>
+                                <div
+                                    style="font-size:0.65rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--text-mid); font-weight:700;">
+                                    Per Night</div>
+                                <div
+                                    style="font-family:'Cormorant Garamond',serif; font-size:2rem; color:var(--indigo); font-weight:600;">
+                                    ₹3,200</div>
+                            </div>
+                            <div style="font-size:0.75rem; color:var(--text-mid);">Taxes included</div>
+                        </div>
+                        <button class="btn-primary" style="width:100%;" onclick="showPage('booking')">Book Gokulam
+                            Suite</button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <div class="cta-strip">
+            <p class="cta-title">Not sure which room to choose?</p>
+            <p class="cta-sub">Call us and we'll help you find the perfect fit</p>
+            <button class="btn-dark" onclick="showPage('contact')">Contact Us</button>
+        </div>
+
+        <footer>
+            <div class="footer-inner">
+                <div>
+                    <div class="nav-logo" style="cursor:default;">
+                        <div class="nav-logo-icon">🦚</div><span class="nav-logo-text">Hotel Vrindavan</span>
+                    </div>
+                    <p class="footer-brand-desc">A peaceful, devotional retreat near the sacred temples of Vrindavan.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="footer-col-title">Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a onclick="showPage('home')">Home</a></li>
+                        <li><a onclick="showPage('rooms')">Rooms</a></li>
+                        <li><a onclick="showPage('gallery')">Gallery</a></li>
+                        <li><a onclick="showPage('contact')">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-col-title">Contact</h4>
+                    <ul class="footer-links">
+                        <li><a>📍 Near Banke Bihari Temple, Vrindavan, UP</a></li>
+                        <li><a>📞 +91 99999 88888</a></li>
+                        <li><a>✉ stay@hotelvrindavan.in</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-col-title">Book</h4>
+                    <ul class="footer-links">
+                        <li><a onclick="showPage('booking')">Reserve a Room</a></li>
+                        <li><a>Check Availability</a></li>
+                        <li><a>Group Booking</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span class="footer-bottom-text">© 2025 Hotel Vrindavan. All rights reserved.</span>
+                <span class="footer-mantra">🪷 Radhe Radhe</span>
+            </div>
+        </footer>
+    </div>
+
+
+    <!-- ═══════════════════════════════════════
+     PAGE: GALLERY
+═══════════════════════════════════════ -->
+    <div id="page-gallery" class="page">
+        <div style="height:72px;"></div>
+
+        <div class="gallery-hero">
+            <div style="text-align:center; position:relative; z-index:1;">
+                <p
+                    style="font-size:0.72rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold); margin-bottom:1rem; font-weight:700;">
+                    — A Visual Journey —</p>
+                <h1 class="page-hero-title">Our <em style="font-style:italic; color:var(--gold-light)">Gallery</em></h1>
+            </div>
+        </div>
+
+        <div style="max-width: 1200px; margin: 3rem auto; padding: 0 2rem;">
+            <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-bottom:2rem;">
+                <button
+                    style="padding:8px 20px; border:1px solid var(--gold); background:var(--gold); color:var(--indigo); font-family:'Cinzel',serif; font-size:0.65rem; letter-spacing:0.15em; cursor:pointer; border-radius:2px;">All</button>
+                <button
+                    style="padding:8px 20px; border:1px solid var(--border); background:transparent; color:var(--text-mid); font-family:'Cinzel',serif; font-size:0.65rem; letter-spacing:0.15em; cursor:pointer; border-radius:2px;">Rooms</button>
+                <button
+                    style="padding:8px 20px; border:1px solid var(--border); background:transparent; color:var(--text-mid); font-family:'Cinzel',serif; font-size:0.65rem; letter-spacing:0.15em; cursor:pointer; border-radius:2px;">Dining</button>
+                <button
+                    style="padding:8px 20px; border:1px solid var(--border); background:transparent; color:var(--text-mid); font-family:'Cinzel',serif; font-size:0.65rem; letter-spacing:0.15em; cursor:pointer; border-radius:2px;">Temple
+                    Views</button>
+            </div>
+        </div>
+
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80" alt="Hotel Exterior">
+                <div class="gallery-overlay"><span class="gallery-label">Hotel Entrance</span></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&q=80" alt="Standard Room">
+                <div class="gallery-overlay"><span class="gallery-label">Krishna Niwas</span></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=600&q=80" alt="Deluxe Room">
+                <div class="gallery-overlay"><span class="gallery-label">Radha Kunj</span></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&q=80" alt="Family Room">
+                <div class="gallery-overlay"><span class="gallery-label">Gokulam Suite</span></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1544148103-0773bf10d330?w=600&q=80" alt="Dining">
+                <div class="gallery-overlay"><span class="gallery-label">Dining Area</span></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?w=600&q=80" alt="Corridor">
+                <div class="gallery-overlay"><span class="gallery-label">Hotel Corridor</span></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1583845112203-29329902332e?w=600&q=80" alt="Bathroom">
+                <div class="gallery-overlay"><span class="gallery-label">Bathroom</span></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=600&q=80" alt="Lobby">
+                <div class="gallery-overlay"><span class="gallery-label">Reception Lobby</span></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1602002418082-a4443e081dd1?w=800&q=80" alt="Temple">
+                <div class="gallery-overlay"><span class="gallery-label">Nearby Temple</span></div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-inner">
+                <div>
+                    <div class="nav-logo" style="cursor:default;">
+                        <div class="nav-logo-icon">🦚</div><span class="nav-logo-text">Hotel Vrindavan</span>
+                    </div>
+                    <p class="footer-brand-desc">A peaceful, devotional retreat near the sacred temples of Vrindavan.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="footer-col-title">Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a onclick="showPage('home')">Home</a></li>
+                        <li><a onclick="showPage('rooms')">Rooms</a></li>
+                        <li><a onclick="showPage('gallery')">Gallery</a></li>
+                        <li><a onclick="showPage('contact')">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-col-title">Contact</h4>
+                    <ul class="footer-links">
+                        <li><a>📍 Near Banke Bihari Temple, Vrindavan, UP</a></li>
+                        <li><a>📞 +91 99999 88888</a></li>
+                        <li><a>✉ stay@hotelvrindavan.in</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-col-title">Book</h4>
+                    <ul class="footer-links">
+                        <li><a onclick="showPage('booking')">Reserve a Room</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span class="footer-bottom-text">© 2025 Hotel Vrindavan. All rights reserved.</span>
+                <span class="footer-mantra">🪷 Radhe Radhe</span>
+            </div>
+        </footer>
+    </div>
+
+
+    <!-- ═══════════════════════════════════════
+     PAGE: CONTACT
+═══════════════════════════════════════ -->
+    <div id="page-contact" class="page">
+        <div style="height:72px;"></div>
+        <div style="background: var(--cream); padding: 3rem 2rem 1rem;">
+            <div class="section-inner">
+                <p class="section-tag">Reach Us</p>
+                <h1 class="section-title">Get in <em>Touch</em></h1>
+            </div>
+        </div>
+
+        <div class="contact-layout">
+            <div>
+                <div class="contact-info-card">
+                    <h3 class="section-title">Hotel Vrindavan</h3>
+                    <div class="contact-detail">
+                        <div class="contact-detail-icon">📍</div>
+                        <div>
+                            <div class="contact-detail-label">Address</div>
+                            <div class="contact-detail-value">Near Banke Bihari Temple,<br>Vrindavan, Mathura —
+                                281121<br>Uttar Pradesh, India</div>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-detail-icon">📞</div>
+                        <div>
+                            <div class="contact-detail-label">Phone</div>
+                            <div class="contact-detail-value">+91 99999 88888</div>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-detail-icon">✉</div>
+                        <div>
+                            <div class="contact-detail-label">Email</div>
+                            <div class="contact-detail-value">stay@hotelvrindavan.in</div>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-detail-icon">🕐</div>
+                        <div>
+                            <div class="contact-detail-label">Reception Hours</div>
+                            <div class="contact-detail-value">Open 24 hours, 7 days a week</div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                        <div class="contact-detail-label" style="margin-bottom:0.8rem;">Nearby Landmarks</div>
+                        <div style="display:flex; flex-direction:column; gap:6px;">
+                            <div style="font-size:0.8rem; color:rgba(255,255,255,0.55);">🛕 Banke Bihari Mandir — 5 min
+                                walk</div>
+                            <div style="font-size:0.8rem; color:rgba(255,255,255,0.55);">🛕 ISKCON Temple — 10 min walk
+                            </div>
+                            <div style="font-size:0.8rem; color:rgba(255,255,255,0.55);">🚌 Vrindavan Bus Stand — 8 min
+                                walk</div>
+                            <div style="font-size:0.8rem; color:rgba(255,255,255,0.55);">🚂 Mathura Junction — 15 min
+                                drive</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h2 class="form-title">Send Us a Message</h2>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">First Name</label>
+                        <input type="text" class="form-input" placeholder="Ramesh">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Last Name</label>
+                        <input type="text" class="form-input" placeholder="Sharma">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" class="form-input" placeholder="you@example.com">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Phone Number</label>
+                    <input type="tel" class="form-input" placeholder="+91 98765 43210">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Check-in Date</label>
+                        <input type="date" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Check-out Date</label>
+                        <input type="date" class="form-input">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Message / Special Requests</label>
+                    <textarea class="form-textarea"
+                        placeholder="Any special requirements, arrival time, or questions..."></textarea>
+                </div>
+                <button class="btn-primary" style="width:100%; padding: 16px;">Send Message 🪷</button>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-inner">
+                <div>
+                    <div class="nav-logo" style="cursor:default;">
+                        <div class="nav-logo-icon">🦚</div><span class="nav-logo-text">Hotel Vrindavan</span>
+                    </div>
+                    <p class="footer-brand-desc">A peaceful, devotional retreat near the sacred temples of Vrindavan.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="footer-col-title">Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a onclick="showPage('home')">Home</a></li>
+                        <li><a onclick="showPage('rooms')">Rooms</a></li>
+                        <li><a onclick="showPage('gallery')">Gallery</a></li>
+                        <li><a onclick="showPage('contact')">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-col-title">Contact</h4>
+                    <ul class="footer-links">
+                        <li><a>📍 Near Banke Bihari Temple, Vrindavan, UP</a></li>
+                        <li><a>📞 +91 99999 88888</a></li>
+                        <li><a>✉ stay@hotelvrindavan.in</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-col-title">Book</h4>
+                    <ul class="footer-links">
+                        <li><a onclick="showPage('booking')">Reserve a Room</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span class="footer-bottom-text">© 2025 Hotel Vrindavan. All rights reserved.</span>
+                <span class="footer-mantra">🪷 Radhe Radhe</span>
+            </div>
+        </footer>
+    </div>
+
+
+    <!-- ═══════════════════════════════════════
+     PAGE: BOOKING
+═══════════════════════════════════════ -->
+    <div id="page-booking" class="page booking-page">
+        <div style="height:72px;"></div>
+
+        <div class="booking-hero">
+            <div style="position:relative; z-index:1; text-align:center;">
+                <p
+                    style="font-size:0.72rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold); margin-bottom:1rem; font-weight:700;">
+                    — Reserve Your Stay —</p>
+                <h1 class="page-hero-title">Book a <em style="color:var(--gold-light); font-style:italic;">Room</em>
+                </h1>
+            </div>
+        </div>
+
+        <div style="max-width: 860px; margin: -50px auto 0; padding: 0 2rem; position:relative; z-index:2;">
+            <div class="booking-form-wrap">
+                <div class="booking-form-header">
+                    <span style="font-size:1.2rem;">🦚</span>
+                    <h3>Check Availability</h3>
+                </div>
+                <div class="booking-form-body">
+                    <div class="booking-grid">
+                        <div class="form-group" style="margin-bottom:0;">
+                            <label class="form-label">Check-in</label>
+                            <input type="date" class="form-input">
+                        </div>
+                        <div class="form-group" style="margin-bottom:0;">
+                            <label class="form-label">Check-out</label>
+                            <input type="date" class="form-input">
+                        </div>
+                        <div class="form-group" style="margin-bottom:0;">
+                            <label class="form-label">Guests</label>
+                            <select class="form-select">
+                                <option>1 Guest</option>
+                                <option>2 Guests</option>
+                                <option>3 Guests</option>
+                                <option>4 Guests</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="btn-primary" style="width:100%; padding:14px;">Search Availability</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="booking-summary">
+            <h2
+                style="font-family:'Cormorant Garamond',serif; font-size:1.8rem; color:var(--indigo); margin: 3rem 0 0.5rem;">
+                Select Your Room</h2>
+            <p style="color:var(--text-mid); font-size:0.85rem; margin-bottom: 0.5rem;">Choose the room that best suits
+                your needs</p>
+            <div class="room-select-grid">
+
+                <div class="room-select-card selected" onclick="selectRoom(this)">
+                    <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=400&q=70"
+                        alt="Krishna Niwas">
+                    <div class="room-select-info">
+                        <div class="room-select-name">Krishna Niwas</div>
+                        <div class="room-select-price">₹1,800 / night</div>
+                        <div style="font-size:0.7rem; color:var(--text-mid); margin-top:3px;">Standard · 1 Double Bed
+                        </div>
+                    </div>
+                </div>
+
+                <div class="room-select-card" onclick="selectRoom(this)">
+                    <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=400&q=70" alt="Radha Kunj">
+                    <div class="room-select-info">
+                        <div class="room-select-name">Radha Kunj</div>
+                        <div class="room-select-price">₹2,500 / night</div>
+                        <div style="font-size:0.7rem; color:var(--text-mid); margin-top:3px;">Deluxe · 1 King Bed</div>
+                    </div>
+                </div>
+
+                <div class="room-select-card" onclick="selectRoom(this)">
+                    <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=400&q=70"
+                        alt="Gokulam Suite">
+                    <div class="room-select-info">
+                        <div class="room-select-name">Gokulam Suite</div>
+                        <div class="room-select-price">₹3,200 / night</div>
+                        <div style="font-size:0.7rem; color:var(--text-mid); margin-top:3px;">Family · 2 Double Beds
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div
+                style="margin-top: 3rem; background:#fff; border:1px solid var(--border); border-radius:4px; overflow:hidden;">
+                <div style="background:var(--indigo); padding:1rem 1.5rem;">
+                    <h3
+                        style="font-family:'Cinzel',serif; color:var(--gold-light); font-size:0.85rem; letter-spacing:0.1em;">
+                        Guest Details</h3>
+                </div>
+                <div style="padding:2rem;">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Full Name</label>
+                            <input type="text" class="form-input" placeholder="Your full name">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Phone</label>
+                            <input type="tel" class="form-input" placeholder="+91 XXXXX XXXXX">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-input" placeholder="your@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Special Requests (optional)</label>
+                        <textarea class="form-textarea" placeholder="Early check-in, dietary needs, etc."
+                            style="min-height:80px;"></textarea>
+                    </div>
+
+                    <div
+                        style="background:var(--cream); border:1px solid var(--border); border-radius:3px; padding:1.2rem; margin-bottom:1.5rem;">
+                        <div
+                            style="font-family:'Cinzel',serif; font-size:0.7rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--text-mid); margin-bottom:0.8rem;">
+                            Booking Summary</div>
+                        <div
+                            style="display:flex; justify-content:space-between; font-size:0.85rem; color:var(--text-mid); margin-bottom:4px;">
+                            <span>Room — Krishna Niwas</span><span>₹1,800</span></div>
+                        <div
+                            style="display:flex; justify-content:space-between; font-size:0.85rem; color:var(--text-mid); margin-bottom:4px;">
+                            <span>Duration</span><span>— nights</span></div>
+                        <div
+                            style="display:flex; justify-content:space-between; font-size:0.85rem; color:var(--text-mid); margin-bottom:4px;">
+                            <span>Taxes & fees</span><span>Included</span></div>
+                        <div
+                            style="border-top:1px solid var(--border); padding-top:8px; margin-top:8px; display:flex; justify-content:space-between; font-family:'Cormorant Garamond',serif; font-size:1.3rem; color:var(--indigo);">
+                            <span>Total</span><span>₹1,800+</span>
+                        </div>
+                    </div>
+
+                    <button class="btn-primary" style="width:100%; padding:16px; font-size:0.8rem;">
+                        🪷 Confirm Booking
+                    </button>
+                    <p style="text-align:center; font-size:0.72rem; color:var(--text-mid); margin-top:0.8rem;">Free
+                        cancellation up to 24 hours before check-in</p>
+                </div>
+            </div>
+        </div>
+
+        <footer style="margin-top:4rem;">
+            <div class="footer-inner">
+                <div>
+                    <div class="nav-logo" style="cursor:default;">
+                        <div class="nav-logo-icon">🦚</div><span class="nav-logo-text">Hotel Vrindavan</span>
+                    </div>
+                    <p class="footer-brand-desc">A peaceful, devotional retreat near the sacred temples of Vrindavan.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="footer-col-title">Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a onclick="showPage('home')">Home</a></li>
+                        <li><a onclick="showPage('rooms')">Rooms</a></li>
+                        <li><a onclick="showPage('gallery')">Gallery</a></li>
+                        <li><a onclick="showPage('contact')">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-col-title">Contact</h4>
+                    <ul class="footer-links">
+                        <li><a>📍 Near Banke Bihari Temple, Vrindavan, UP</a></li>
+                        <li><a>📞 +91 99999 88888</a></li>
+                        <li><a>✉ stay@hotelvrindavan.in</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-col-title">Book</h4>
+                    <ul class="footer-links">
+                        <li><a onclick="showPage('booking')">Reserve a Room</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span class="footer-bottom-text">© 2025 Hotel Vrindavan. All rights reserved.</span>
+                <span class="footer-mantra">🪷 Radhe Radhe</span>
+            </div>
+        </footer>
+    </div>
+
+
+    <script>
+        function showPage(name) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById('page-' + name).classList.add('active');
+            document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+            const navEl = document.getElementById('nav-' + name);
+            if (navEl) navEl.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function selectRoom(card) {
+            document.querySelectorAll('.room-select-card').forEach(c => c.classList.remove('selected'));
+            card.classList.add('selected');
+        }
+
+        // Reveal on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) { e.target.classList.add('visible'); }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+
+</html>
